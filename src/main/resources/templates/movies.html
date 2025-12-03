@@ -3,21 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Movies This Month</title>
+    <title>Free Movies This Month - Treasure Chest</title>
     <link rel="stylesheet" th:href="@{/css/movies.css}">
 </head>
 <body>
     <div class="container">
-        <h1>Free Movies This Month</h1>
-        <div class="movies-grid">
+        <h1>🏴‍☠️ Movie Treasure Chest 🏴‍☠️</h1>
+        <p class="pirate-subtitle">Ahoy matey! Welcome to our collection of free movie treasures!</p>
+        
+        <!-- Treasure Hunt Search Form -->
+        <div class="treasure-hunt-form">
+            <h2>🔍 Hunt for Movie Treasures</h2>
+            <form method="GET" action="/movies" class="search-form">
+                <div class="search-row">
+                    <div class="search-field">
+                        <label for="name">🎬 Movie Name:</label>
+                        <input type="text" id="name" name="name" 
+                               th:value="${searchName}" 
+                               placeholder="Enter movie name, ye landlubber...">
+                    </div>
+                    <div class="search-field">
+                        <label for="id">🆔 Movie ID:</label>
+                        <input type="number" id="id" name="id" 
+                               th:value="${searchId}" 
+                               placeholder="Enter treasure ID..." min="1">
+                    </div>
+                </div>
+                <div class="search-row">
+                    <div class="search-field">
+                        <label for="genre">🎭 Genre:</label>
+                        <select id="genre" name="genre">
+                            <option value="">All genres, arrr!</option>
+                            <option th:each="genre : ${availableGenres}" 
+                                    th:value="${genre}" 
+                                    th:text="${genre}"
+                                    th:selected="${genre == searchGenre}">Genre</option>
+                        </select>
+                    </div>
+                    <div class="search-buttons">
+                        <button type="submit" class="search-btn">🔍 Hunt for Treasures!</button>
+                        <a href="/movies" class="clear-btn">🧹 Clear Search</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Pirate Messages -->
+        <div th:if="${pirateMessage}" class="pirate-message" 
+             th:classappend="${noTreasuresFound} ? 'no-treasures' : 'treasures-found'">
+            <span th:text="${pirateMessage}">Pirate message here</span>
+        </div>
+
+        <!-- Search Results Info -->
+        <div th:if="${searchPerformed}" class="search-info">
+            <h3>🗺️ Search Results</h3>
+            <div class="search-params">
+                <span th:if="${searchName}" class="search-param">
+                    <strong>Name:</strong> <span th:text="${searchName}"></span>
+                </span>
+                <span th:if="${searchId}" class="search-param">
+                    <strong>ID:</strong> <span th:text="${searchId}"></span>
+                </span>
+                <span th:if="${searchGenre}" class="search-param">
+                    <strong>Genre:</strong> <span th:text="${searchGenre}"></span>
+                </span>
+            </div>
+        </div>
+
+        <!-- Movies Grid -->
+        <div class="movies-grid" th:if="${!noTreasuresFound}">
             <div class="movie-card" th:each="movie : ${movies}">
                 <div class="movie-icon" th:text="${movie.icon}">🎬</div>
                 <h3 th:text="${movie.movieName}">Movie Title</h3>
                 <div class="movie-details">
-                    <p class="director">Director: <span th:text="${movie.director}">Director Name</span></p>
-                    <p class="year">Year: <span th:text="${movie.year}">2023</span></p>
-                    <p class="genre">Genre: <span th:text="${movie.genre}">Drama</span></p>
-                    <p class="duration">Duration: <span th:text="${movie.duration}">120</span> minutes</p>
+                    <p class="movie-id">🆔 ID: <span th:text="${movie.id}">1</span></p>
+                    <p class="director">🎬 Director: <span th:text="${movie.director}">Director Name</span></p>
+                    <p class="year">📅 Year: <span th:text="${movie.year}">2023</span></p>
+                    <p class="genre">🎭 Genre: <span th:text="${movie.genre}">Drama</span></p>
+                    <p class="duration">⏱️ Duration: <span th:text="${movie.duration}">120</span> minutes</p>
                 </div>
                 <div class="rating">
                     <span class="stars">
@@ -26,9 +89,53 @@
                     </span>
                     <span class="rating-score" th:text="${#numbers.formatDecimal(movie.imdbRating, 1, 1)} + '/5'">5.0/5</span>
                 </div>
-                <a th:href="@{/movies/{id}/details(id=${movie.id})}" class="details-btn">View Details</a>
+                <a th:href="@{/movies/{id}/details(id=${movie.id})}" class="details-btn">⚓ View Details</a>
             </div>
         </div>
+
+        <!-- No Results Message -->
+        <div th:if="${noTreasuresFound}" class="no-results">
+            <div class="no-results-icon">🏴‍☠️</div>
+            <h3>No Treasures Found!</h3>
+            <p>Arrr! The treasure chest be empty for yer search criteria, matey!</p>
+            <p>Try adjusting yer search terms or <a href="/movies">view all treasures</a>.</p>
+        </div>
+
+        <!-- API Documentation -->
+        <div class="api-docs">
+            <h3>🔧 API for Developers</h3>
+            <p>Ye can also use our REST API for treasure hunting:</p>
+            <code>GET /movies/search?name={movieName}&id={movieId}&genre={genre}</code>
+            <p class="api-note">Returns JSON response with search results, perfect for yer own applications, savvy?</p>
+        </div>
     </div>
+
+    <script>
+        // Ahoy! JavaScript for enhanced treasure hunting experience
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchForm = document.querySelector('.search-form');
+            const searchBtn = document.querySelector('.search-btn');
+            
+            // Add some pirate flair to the search button
+            searchBtn.addEventListener('click', function() {
+                this.textContent = '🔍 Hunting...';
+                setTimeout(() => {
+                    searchForm.submit();
+                }, 100);
+            });
+            
+            // Clear form functionality
+            const clearBtn = document.querySelector('.clear-btn');
+            if (clearBtn) {
+                clearBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.getElementById('name').value = '';
+                    document.getElementById('id').value = '';
+                    document.getElementById('genre').value = '';
+                    window.location.href = '/movies';
+                });
+            }
+        });
+    </script>
 </body>
 </html>

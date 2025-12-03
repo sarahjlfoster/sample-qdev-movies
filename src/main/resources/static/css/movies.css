@@ -22,12 +22,249 @@ body {
 h1 {
     text-align: center;
     font-size: 3rem;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     background: linear-gradient(45deg, #f39c12, #e74c3c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.pirate-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ffc107;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+/* Treasure Hunt Search Form Styles */
+.treasure-hunt-form {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 2px solid rgba(255,193,7,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.treasure-hunt-form h2 {
+    text-align: center;
+    color: #ffc107;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.search-row {
+    display: flex;
+    gap: 20px;
+    align-items: end;
+}
+
+.search-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-field label {
+    color: #ffc107;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.search-field input,
+.search-field select {
+    padding: 12px 15px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.search-field input:focus,
+.search-field select:focus {
+    outline: none;
+    border-color: #ffc107;
+    box-shadow: 0 0 10px rgba(255,193,7,0.3);
+}
+
+.search-field input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+.search-buttons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.search-btn {
+    background: linear-gradient(45deg, #28a745, #20c997);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(40,167,69,0.3);
+}
+
+.search-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(40,167,69,0.5);
+    background: linear-gradient(45deg, #20c997, #17a2b8);
+}
+
+.clear-btn {
+    background: linear-gradient(45deg, #6c757d, #495057);
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(108,117,125,0.3);
+}
+
+.clear-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(108,117,125,0.5);
+    background: linear-gradient(45deg, #495057, #343a40);
+}
+
+/* Pirate Messages */
+.pirate-message {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.pirate-message.treasures-found {
+    background: rgba(40,167,69,0.2);
+    border: 2px solid rgba(40,167,69,0.5);
+    color: #28a745;
+}
+
+.pirate-message.no-treasures {
+    background: rgba(220,53,69,0.2);
+    border: 2px solid rgba(220,53,69,0.5);
+    color: #dc3545;
+}
+
+/* Search Results Info */
+.search-info {
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    border-left: 4px solid #ffc107;
+}
+
+.search-info h3 {
+    color: #ffc107;
+    margin-bottom: 15px;
+}
+
+.search-params {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.search-param {
+    background: rgba(255,255,255,0.1);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.search-param strong {
+    color: #ffc107;
+}
+
+/* No Results Styling */
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.no-results-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.no-results h3 {
+    color: #dc3545;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.no-results p {
+    color: #ccc;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.no-results a {
+    color: #ffc107;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.no-results a:hover {
+    text-decoration: underline;
+}
+
+/* API Documentation */
+.api-docs {
+    background: rgba(255,255,255,0.05);
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 40px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.api-docs h3 {
+    color: #17a2b8;
+    margin-bottom: 15px;
+}
+
+.api-docs code {
+    background: rgba(0,0,0,0.3);
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: block;
+    margin: 15px 0;
+    color: #28a745;
+    font-family: 'Courier New', monospace;
+    overflow-x: auto;
+}
+
+.api-note {
+    color: #aaa;
+    font-style: italic;
+    font-size: 0.9rem;
 }
 
 .movies-grid {
@@ -96,6 +333,10 @@ h1 {
     font-weight: 600;
 }
 
+.movie-id span {
+    color: #6f42c1;
+}
+
 .director span {
     color: #17a2b8;
 }
@@ -161,7 +402,37 @@ h1 {
     
     h1 {
         font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+    
+    .pirate-subtitle {
+        font-size: 1rem;
         margin-bottom: 30px;
+    }
+    
+    .treasure-hunt-form {
+        padding: 20px;
+    }
+    
+    .search-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .search-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .search-btn,
+    .clear-btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .search-params {
+        flex-direction: column;
+        gap: 10px;
     }
     
     .movies-grid {
@@ -175,5 +446,10 @@ h1 {
     
     .movie-card h3 {
         font-size: 1.5rem;
+    }
+    
+    .api-docs code {
+        font-size: 0.8rem;
+        padding: 8px 10px;
     }
 }
