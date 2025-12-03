@@ -22,12 +22,249 @@ body {
 h1 {
     text-align: center;
     font-size: 3rem;
-    margin-bottom: 50px;
-    background: linear-gradient(45deg, #f39c12, #e74c3c);
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.pirate-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ffb3d9;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+/* Treasure Hunt Search Form Styles */
+.treasure-hunt-form {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 2px solid rgba(255,182,193,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.treasure-hunt-form h2 {
+    text-align: center;
+    color: #ffb3d9;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.search-row {
+    display: flex;
+    gap: 20px;
+    align-items: end;
+}
+
+.search-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-field label {
+    color: #ffb3d9;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.search-field input,
+.search-field select {
+    padding: 12px 15px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.search-field input:focus,
+.search-field select:focus {
+    outline: none;
+    border-color: #ffb3d9;
+    box-shadow: 0 0 10px rgba(255,182,193,0.3);
+}
+
+.search-field input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+.search-buttons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.search-btn {
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255,105,180,0.3);
+}
+
+.search-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(255,105,180,0.5);
+    background: linear-gradient(45deg, #ff1493, #c71585);
+}
+
+.clear-btn {
+    background: linear-gradient(45deg, #db7093, #c71585);
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(219,112,147,0.3);
+}
+
+.clear-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(219,112,147,0.5);
+    background: linear-gradient(45deg, #c71585, #8b008b);
+}
+
+/* Pirate Messages */
+.pirate-message {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.pirate-message.treasures-found {
+    background: rgba(255,105,180,0.2);
+    border: 2px solid rgba(255,105,180,0.5);
+    color: #ff69b4;
+}
+
+.pirate-message.no-treasures {
+    background: rgba(255,20,147,0.2);
+    border: 2px solid rgba(255,20,147,0.5);
+    color: #ff1493;
+}
+
+/* Search Results Info */
+.search-info {
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    border-left: 4px solid #ffb3d9;
+}
+
+.search-info h3 {
+    color: #ffb3d9;
+    margin-bottom: 15px;
+}
+
+.search-params {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.search-param {
+    background: rgba(255,255,255,0.1);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.search-param strong {
+    color: #ffb3d9;
+}
+
+/* No Results Styling */
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.no-results-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.no-results h3 {
+    color: #ff1493;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.no-results p {
+    color: #ccc;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.no-results a {
+    color: #ffb3d9;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.no-results a:hover {
+    text-decoration: underline;
+}
+
+/* API Documentation */
+.api-docs {
+    background: rgba(255,255,255,0.05);
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 40px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.api-docs h3 {
+    color: #ff8fa3;
+    margin-bottom: 15px;
+}
+
+.api-docs code {
+    background: rgba(0,0,0,0.3);
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: block;
+    margin: 15px 0;
+    color: #ff69b4;
+    font-family: 'Courier New', monospace;
+    overflow-x: auto;
+}
+
+.api-note {
+    color: #aaa;
+    font-style: italic;
+    font-size: 0.9rem;
 }
 
 .movies-grid {
@@ -54,7 +291,7 @@ h1 {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(45deg, #f39c12, #e74c3c);
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
 }
 
 .movie-card:hover {
@@ -96,34 +333,38 @@ h1 {
     font-weight: 600;
 }
 
+.movie-id span {
+    color: #da70d6;
+}
+
 .director span {
-    color: #17a2b8;
+    color: #ff8fa3;
 }
 
 .year span {
-    color: #28a745;
+    color: #ffb3d9;
 }
 
 .genre span {
-    color: #ffc107;
+    color: #ffc0cb;
 }
 
 .duration span {
-    color: #e74c3c;
+    color: #ff69b4;
 }
 
 .rating {
     text-align: center;
     margin-bottom: 25px;
     padding: 15px;
-    background: rgba(255,193,7,0.1);
+    background: rgba(255,182,193,0.1);
     border-radius: 15px;
-    border: 1px solid rgba(255,193,7,0.2);
+    border: 1px solid rgba(255,182,193,0.2);
 }
 
 .stars {
     font-size: 1.5rem;
-    color: #ffc107;
+    color: #ffc0cb;
     margin-right: 10px;
     text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
@@ -131,11 +372,11 @@ h1 {
 .rating-score {
     font-size: 1.3rem;
     font-weight: 700;
-    color: #ffc107;
+    color: #ffc0cb;
 }
 
 .details-btn {
-    background: linear-gradient(45deg, #007bff, #0056b3);
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
     color: white;
     padding: 15px 30px;
     text-decoration: none;
@@ -145,13 +386,13 @@ h1 {
     font-weight: 600;
     font-size: 1.1rem;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+    box-shadow: 0 4px 15px rgba(255,105,180,0.3);
 }
 
 .details-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(0,123,255,0.5);
-    background: linear-gradient(45deg, #0056b3, #004085);
+    box-shadow: 0 8px 25px rgba(255,105,180,0.5);
+    background: linear-gradient(45deg, #ff1493, #c71585);
 }
 
 @media (max-width: 768px) {
@@ -161,7 +402,37 @@ h1 {
     
     h1 {
         font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+    
+    .pirate-subtitle {
+        font-size: 1rem;
         margin-bottom: 30px;
+    }
+    
+    .treasure-hunt-form {
+        padding: 20px;
+    }
+    
+    .search-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .search-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .search-btn,
+    .clear-btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .search-params {
+        flex-direction: column;
+        gap: 10px;
     }
     
     .movies-grid {
@@ -175,5 +446,10 @@ h1 {
     
     .movie-card h3 {
         font-size: 1.5rem;
+    }
+    
+    .api-docs code {
+        font-size: 0.8rem;
+        padding: 8px 10px;
     }
 }
