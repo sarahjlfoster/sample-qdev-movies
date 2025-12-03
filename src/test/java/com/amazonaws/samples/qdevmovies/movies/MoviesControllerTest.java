@@ -84,6 +84,25 @@ public class MoviesControllerTest {
     }
 
     @Test
+    public void testAddReviewSuccess() {
+        // Mock HttpSession
+        javax.servlet.http.HttpSession mockSession = org.mockito.Mockito.mock(javax.servlet.http.HttpSession.class);
+        
+        String result = moviesController.addReview(1L, "TestUser", 5, "Great movie with excellent story", mockSession);
+        assertNotNull(result);
+        assertEquals("redirect:/movies/1/details?reviewAdded=true", result);
+    }
+
+    @Test
+    public void testAddReviewValidationError() {
+        javax.servlet.http.HttpSession mockSession = org.mockito.Mockito.mock(javax.servlet.http.HttpSession.class);
+        
+        String result = moviesController.addReview(1L, "", 5, "Short", mockSession);
+        assertNotNull(result);
+        assertTrue(result.contains("error="));
+    }
+
+    @Test
     public void testMovieServiceIntegration() {
         List<Movie> movies = mockMovieService.getAllMovies();
         assertEquals(1, movies.size());
